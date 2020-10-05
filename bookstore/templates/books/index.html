@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+
+</head>
+<link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}">
+
+<body>
+
+
+</body>
+<h1>Book Store</h1>
+<div class="info">
+    <a href="view-cart.php">
+        (<?php echo $cart ?>) books in your cart
+    </a>
+</div>
+<div class="sidebar">
+    <ul class="cats">
+        <li>
+            <b><a href="index.php">All Categories</a></b>
+        </li>
+
+        {% for cat in categ %}
+
+
+
+        <li>
+            <a href="index.php?cat=<?php echo $row['id'] ?>">
+                {{ cat.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="main">
+    <ul class="books">
+
+        {% for book in last_book %}
+
+
+
+        <li>
+            <img src="{{ book.image.url }}" height="150">
+            <b>
+                <a href="{{ book.image.url }}">
+                    {{ book.title }}
+                </a>
+            </b>
+            <i>${{ book.price }}</i>
+
+            <a href="add-to-cart.php?id=<?php echo $row['id'] ?>" class="add-to-cart">Add to Cart</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="footer">
+    &copy; <?php echo date("Y") ?>. All right reserved.
+</div>
+
+</html>
