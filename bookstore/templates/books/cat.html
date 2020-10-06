@@ -43,14 +43,14 @@
 <div class="main">
     <ul class="books">
 
-        {% for book in last_book %}
+        {% for book in book_list %}
 
 
 
         <li>
             <img src="{{ book.image.url }}" height="150">
             <b>
-                <a href="{{ book.image.url }}">
+                <a href="{% url 'detail' book.title %}">
                     {{ book.title }}
                 </a>
             </b>
@@ -58,6 +58,8 @@
 
             <a href="add-to-cart.php?id=<?php echo $row['id'] ?>" class="add-to-cart">Add to Cart</a>
         </li>
+        {% empty %}
+        <h1>{{ message }}</h1>
         {% endfor %}
     </ul>
 </div>
